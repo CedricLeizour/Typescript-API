@@ -9,8 +9,9 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
             query: req.query,
             params: req.params
         });
-    } catch(e: any){
-    return res.status(400).send(e.errors);
+        next();
+    }   catch(e: any){
+        return res.status(400).send(e.errors);
     }
 
 };
